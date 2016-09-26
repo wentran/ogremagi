@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 
 
 render(
-<Provider>
-  <App />
-</Provider>,
+
+  <App />,
+
   document.getElementById('root')
 );
