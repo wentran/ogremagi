@@ -1,6 +1,6 @@
 import React from 'react';
 import {FormGroup, FormControl, ControlLabel, Button, form} from 'react-bootstrap';
-import { postMessages } from './frontEndRouter'
+import { postSurveyAnswers } from '../actions/index'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import axios from 'axios';
@@ -39,9 +39,8 @@ export default class SurveyForm extends React.Component {
         console.log("Error from server", response)
       }
     })
-
     console.log(this.state.value)
-    // this.setState({value: ''});
+    this.setState({value: ''});
   }
 
 
