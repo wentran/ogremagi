@@ -2,17 +2,17 @@ import axios from 'axios';
 
 
 export const POST_SURVEY_RESPONSES =  "POST_SURVEY_RESPONSES"
-// add surveyAnswer
+
 export function postSurveyAnswers(surveyAnswers){
   console.log('surveyAnswers', surveyAnswers);
-		const postSurveyAnswers = axios.post(`/results`, { id  : {
-      surveyAnswers: surveyAnswers,
-    },
-		}) .then(response => {
-				console.log('good response: ', response);
-			}) .catch(response => {
-				console.log('error in action Creator: ',response);
-			});
+		const postSurveyAnswers =  axios.post('/sendMessage', {
+      user: {
+        message: surveyAnswers
+      }
+    })
+    .then(function(response){
+      console.log('saved successfully')
+    })
 
   return {
     type: POST_SURVEY_RESPONSES,
