@@ -19,7 +19,8 @@ db.schema.hasTable('Survey').then(function(exists){
   if(!exists){
     return db.schema.createTable('Survey', function(answer) {
       answer.increments('id').primary();
-      answer.string('survey',50)
+      answer.string('result', 50);
+      answer.integer('price')
       console.log('Created users table');
     })
     .catch(function(err){

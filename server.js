@@ -20,14 +20,14 @@ app.use(bodyParser.urlencoded({
 console.log('router', apiRoutes);
 
 app.use('/api',apiRoutes );
-
+// api+sendanswers
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath,
 }));
 
 
-app.get('*', (req,res) => {
+app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, 'index.html'))
 });
 

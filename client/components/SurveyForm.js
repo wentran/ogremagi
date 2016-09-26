@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 
- export default class SurveyForm extends React.Component {
+export default class SurveyForm extends React.Component {
   constructor() {
     super()
     // initialize state
@@ -26,13 +26,18 @@ import axios from 'axios';
     console.log('onFormSubmit ')
     event.preventDefault();
     // this.props.postMessages(this.state.value)
+
     axios.post('/api/sendanswers', {
-      user: {
+
         message: this.state.value
-      }
+
     })
-    .then(function(response){
-      console.log('saved successfully')
+    .catch(function(response){
+      if (response instanceof Error){
+        console.log('saved successfully')
+      } else {
+        console.log("Error from server", response)
+      }
     })
 
     console.log(this.state.value)
@@ -63,7 +68,7 @@ import axios from 'axios';
 };
 
 
-
+//
 // function mapDispatchToProps(dispatch) {
 //   return bindActionCreators({ postMessages }, dispatch)
 //
