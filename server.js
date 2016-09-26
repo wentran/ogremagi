@@ -4,28 +4,31 @@ import webpackDevMiddleware from 'webpack-dev-middleware'; //required to work wi
 import config from './webpack.config';
 import Express from 'express';
 import bodyParser from 'body-parser'
+import knex from 'knex';
+import db from './web/db';
 
 const app = new Express();
 const port = 3000;
 const compiler = webpack(config);
 
 app.use(bodyParser.json());
-// var db = require('knex')({
-//   client: 'sqlite3',
-//   connection: {
-//     filename: 'ogremagi'
-//   },
-//   useNullAsDefault: true
-// });
-//
-//
-// db.schema.createTableIfNotExists('Chat', function(table){
-//   table.string('message');
-// }).then(function(table){
-//   console.log("table created")
-// })
+/*
+var db = require('knex')({
+  client: 'sqlite3',
+  connection: {
+    filename: 'ogremagi'
+  },
+  useNullAsDefault: true
+});
 
 
+db.schema.createTableIfNotExists('Chat', function(table){
+  table.string('message');
+}).then(function(table){
+  console.log("table created")
+})
+
+*/
 
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true,

@@ -1,13 +1,13 @@
 import React from 'react';
 import {FormGroup, FormControl, ControlLabel, Button, form} from 'react-bootstrap';
-// import { postMessages } from './frontEndRouter'
-// import { bindActionCreators } from 'redux'
+import { postMessages } from './frontEndRouter'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import axios from 'axios';
 
 
 
-export default class SurveyForm extends React.Component {
+ class SurveyForm extends React.Component {
   constructor() {
     super()
     // initialize state
@@ -25,17 +25,17 @@ export default class SurveyForm extends React.Component {
   onFormSubmit(event){
     console.log('onFormSubmit ')
     event.preventDefault();
-    // this.props.postMessages(this.state.value)
-    axios.post('/sendMessage', {
-      user: {
-        message: this.state.value
-      }
-    })
-    .then(function(response){
-      console.log('saved successfully')
-    })
+    this.props.postMessages(this.state.value)
+    // axios.post('/sendMessage', {
+    //   user: {
+    //     message: this.state.value
+    //   }
+    // })
+    // .then(function(response){
+    //   console.log('saved successfully')
+    // })
 
-    // console.log(this.state.value)
+    console.log(this.state.value)
     // this.setState({value: ''});
   }
 
@@ -62,11 +62,10 @@ export default class SurveyForm extends React.Component {
   }
 };
 
-/*
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ postMessages }, dispatch)
 
 }
 export default connect(null, mapDispatchToProps)(SurveyForm);
-*/
