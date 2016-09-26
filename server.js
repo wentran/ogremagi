@@ -10,36 +10,30 @@ import db from './web/db';
 const app = new Express();
 const port = 3000;
 const compiler = webpack(config);
+const apiRoutes = require('./web/router.js');
 
 app.use(bodyParser.json());
-/*
-var db = require('knex')({
-  client: 'sqlite3',
-  connection: {
-    filename: 'ogremagi'
-  },
-  useNullAsDefault: true
-});
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
+console.log('router', apiRoutes);
 
-db.schema.createTableIfNotExists('Chat', function(table){
-  table.string('message');
-}).then(function(table){
-  console.log("table created")
-})
-
-*/
+app.use('/api',apiRoutes );
 
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath,
 }));
 
-app.get('/', (req,res) => {
+
+app.get('*', (req,res) => {
     res.sendFile(path.join(__dirname, 'index.html'))
 });
 
 
+
+/*
 var messages = []
 app.post('/sendMessage', function(req,res, err){
   console.log('send message');
@@ -48,14 +42,10 @@ app.post('/sendMessage', function(req,res, err){
   res.sendStatus(201)
 });
 
+*/
 
-app.get('/getMessage', function(req,res, err){
-  console.log(req.body)
-  // messages.push(req.body);
-  res.send(201)
-});
-// route when user requests their messages they had with other user
-// app.get('/getMessage', requireAuth, chatController.getMessages);
+
+
 
 app.listen(port,error => {
     if (error) {

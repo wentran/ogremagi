@@ -26,7 +26,7 @@ import axios from 'axios';
     console.log('onFormSubmit ')
     event.preventDefault();
     // this.props.postMessages(this.state.value)
-    axios.post('/sendMessage', {
+    axios.post('/api/sendanswers', {
       user: {
         message: this.state.value
       }
