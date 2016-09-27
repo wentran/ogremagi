@@ -6,7 +6,7 @@ export const FETCH_ANSWERS = 'FETCH_ANSWERS';
 
 export function postSurveyAnswers(input){
   const surveyAnswers = axios.post('/api/sendanswers', {
-      result: input 
+      result: input
   })
   .then(function(response){
     console.log('saved successfully')
@@ -17,9 +17,12 @@ export function postSurveyAnswers(input){
   }
 }
 
+
+
 export function fetchAnswers() {
   const request = axios.get('api/getanswers');
   console.log('+here++',request)
+
   return {
     type: FETCH_ANSWERS,
     payload: request

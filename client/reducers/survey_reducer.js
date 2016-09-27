@@ -1,11 +1,11 @@
-/*
+
 import { FETCH_ANSWERS } from '../actions/index';
 
 export default function(state=null, action){
   switch(action.type) {
     // console.log('action received', action)
     case FETCH_ANSWERS:
-    console.log('in redeucersss!!!', '++==', action)
+    console.log('in redeucersss!!!', '++==', action.payload)
     return action.payload.data
     // return [
     //   /* make a new array and put payload data in it and concat with state= state.concat([action.payload.data]); action.payload.data, ...state]
@@ -14,8 +14,23 @@ export default function(state=null, action){
   return state;
 }
 
-*/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 import { FETCH_ANSWERS } from '../actions/index';
 
 export default function(state=null, action){
@@ -25,8 +40,9 @@ export default function(state=null, action){
       console.log('in redeucersss!!!', '++==', action)
       return Object.assign({}, state, action.payload.data)
     // return [
-    //   /* make a new array and put payload data in it and concat with state= state.concat([action.payload.data]);*/ action.payload.data, ...state]
+    //    make a new array and put payload data in it and concat with state= state.concat([action.payload.data]); action.payload.data, ...state]
   }
 
   return state;
 }
+*/
