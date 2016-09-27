@@ -3,10 +3,10 @@ const router = require('express').Router()
 
 
 router.post('/sendanswers', function (req, res) {
-	console.log(req.body)
+	console.log('_-----',req.body.result)
   // use insert to add item into DB
   db.insert({
-    price:req.body.message})
+    result:req.body.result})
   .into('Survey')
   .then(function(){
     res.send('working');

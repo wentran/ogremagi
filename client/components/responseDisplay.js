@@ -3,11 +3,16 @@ import { fetchAnswers } from '../actions/index'
 import { bindActionCreators } from 'redux'
 import {Link} from 'react-router'
 import { connect } from 'react-redux'
-import axios from 'axios';
+
 
 
 
 class Display extends React.Component {
+
+  componentWillMount(){
+    this.props.fetchAnswers()
+  }
+
   render() {
     console.log('responses', this.props.responses)
 
@@ -16,14 +21,40 @@ class Display extends React.Component {
       <div>
       <ul onClick={this.props.fetchAnswers}>
 Click here to view Below
-      // {this.props.responses}
+      {this.props.responses}
+      </ul>
+      </div>
+    )
+}
+}
+/*
+
+
+class Display extends React.Component {
+  renderList() {
+return this.props.responses.map((response) =>{
+  return (
+    <li
+    key={reponse.result}
+    className="list-group-item">
+    {response.result}
+    </li>
+  )
+})
+}
+    render  () {
+    return(
+      <div>
+      <ul onClick={this.props.fetchAnswers}>
+Click here to view Below
+      {this.renderList()}
       </ul>
       </div>
     )
 }
 }
 
-
+*/
 function mapStateToProps({ responses }) {
 
   console.log('mapstate',responses)
