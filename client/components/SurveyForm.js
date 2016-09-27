@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 
-export default class SurveyForm extends React.Component {
+class SurveyForm extends React.Component {
   constructor() {
     super()
     // initialize state
@@ -25,22 +25,22 @@ export default class SurveyForm extends React.Component {
   onFormSubmit(event){
     console.log('onFormSubmit ')
     event.preventDefault();
-    // this.props.postMessages(this.state.value)
+    this.props.postSurveyAnswers(this.state.value)
 
-    axios.post('/api/sendanswers', {
-
-        message: this.state.value
-
-    })
-    .catch(function(response){
-      if (response instanceof Error){
-        console.log('saved successfully')
-      } else {
-        console.log("Error from server", response)
-      }
-    })
+    // axios.post('/api/sendanswers', {
+    //
+    //     message: this.state.value
+    //
+    // })
+    // .catch(function(response){
+    //   if (response instanceof Error){
+    //     console.log('saved successfully')
+    //   } else {
+    //     console.log("Error from server", response)
+    //   }
+    // })
     console.log(this.state.value)
-    this.setState({value: ''});
+    // this.setState({value: ''});
   }
 
 
@@ -51,11 +51,9 @@ export default class SurveyForm extends React.Component {
       <form onSubmit={this.onFormSubmit}>
       <FormGroup>
         <ControlLabel> Hello World </ControlLabel>
-
         <FormControl
           type="text"
           value={this.state.value}
-
           placeholder="Enter text"
           onChange={this.handleChange}
         />
@@ -67,9 +65,9 @@ export default class SurveyForm extends React.Component {
 };
 
 
-//
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ postMessages }, dispatch)
-//
-// }
-// export default connect(null, mapDispatchToProps)(SurveyForm);
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ postSurveyAnswers }, dispatch)
+
+}
+export default connect(null, mapDispatchToProps)(SurveyForm);

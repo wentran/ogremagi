@@ -4,7 +4,6 @@ import axios from 'axios';
 export const POST_SURVEY_RESPONSES =  "POST_SURVEY_RESPONSES"
 
 export function postSurveyAnswers(input){
-  console.log('input', input);
   const surveyAnswers = axios.post('/api/sendanswers', {
     user: {
       message: input
@@ -15,7 +14,21 @@ export function postSurveyAnswers(input){
   })
   return {
     type: POST_SURVEY_RESPONSES,
-    surveyAnswers
+    payload: surveyAnswers
   }
 
+}
+
+
+
+
+
+export const FETCH_ANSWERS = 'FETCH_ANSWERS';
+export function fetchAnswers() {
+  const request = axios.get('api/getanswers');
+  console.log('+here++',request)
+  return {
+    type: FETCH_ANSWERS,
+    payload: request
+  };
 }
