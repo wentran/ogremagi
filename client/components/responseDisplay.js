@@ -8,25 +8,24 @@ import axios from 'axios';
 
 
 class Display extends React.Component {
-
-
   render() {
     console.log('responses', this.props.responses)
 
+
     return (
+      <div>
       <ul onClick={this.props.fetchAnswers}>
 Click here to view Below
+      // {this.props.responses}
       </ul>
+      </div>
     )
-  }
-
+}
 }
 
 
-
 function mapStateToProps({ responses }) {
-  // Whatever is returned will show up as props
-  // inside
+
   console.log('mapstate',responses)
   return {
     responses: responses
